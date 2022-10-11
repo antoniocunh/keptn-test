@@ -12,7 +12,7 @@ case "$1" in
     ;;
   "onboard-service")
     echo "Onboarding keptn service helloservice in project ${PROJECT}"
-    keptn create service helloservice --project="${PROJECT}" --all-stages --resource=helloservice.tgz --resourceUri=charts/helloservice
+    keptn add-resource --service=helloservice --project="${PROJECT}" --all-stages --resource=podtatoserver-0.1.0.tgz
     ;;
   "first-deploy-service")
     echo "Deploying keptn service helloservice in project ${PROJECT}"

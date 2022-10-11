@@ -12,11 +12,11 @@ case "$1" in
     ;;
   "onboard-service")
     echo "Onboarding keptn service helloservice in project ${PROJECT}"
-    keptn onboard service helloservice --project="${PROJECT}" --chart=helm-charts/helloservice
+    keptn create service helloservice --project="${PROJECT}" --all-stages --resource=helloservice.tgz --resourceUri=charts/helloservice
     ;;
   "first-deploy-service")
     echo "Deploying keptn service helloservice in project ${PROJECT}"
-    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}" --tag=v0.1.1
+    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}:v0.1.1"
     ;;
   "deploy-service")
     echo "Deploying keptn service helloservice in project ${PROJECT}"

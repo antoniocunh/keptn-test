@@ -10,11 +10,17 @@ spec:
           tasks:
             - name: "deployment"
               properties:
-                deploymentstrategy: "blue_green_service"
+                deploymentstrategy: "direct"
             - name: "test"
               properties:
-                teststrategy: "performance"
+                teststrategy: "functional"
             - name: "evaluation"
+            - name: "release"
+        - name: "delivery-direct"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "direct"
             - name: "release"
     - name: "production"
       sequences:
@@ -24,5 +30,5 @@ spec:
           tasks:
             - name: "deployment"
               properties:
-                deploymentstrategy: "blue_green_service"
+                deploymentstrategy: "direct"
             - name: "release"

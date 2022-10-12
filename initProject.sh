@@ -12,24 +12,25 @@ case "$1" in
     ;;
   "onboard-service")
     echo "Onboarding keptn service helloservice in project ${PROJECT}"
-    keptn onboard service helloservice --project="${PROJECT}" --chart=helm-charts/helloservice
+    keptn create service helloservice --project="${PROJECT}"
+    keptn add-resource --service=helloservice --project="${PROJECT}" --all-stages --resource=charts/helloservice/podtatoserver-0.1.0.tgz --resourceUri=charts/helloservice.tgz
     ;;
   "first-deploy-service")
     echo "Deploying keptn service helloservice in project ${PROJECT}"
-    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}" --tag=v0.1.1
+    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}:v0.1.1"
     ;;
   "deploy-service")
     echo "Deploying keptn service helloservice in project ${PROJECT}"
     echo keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}" --tag=v"${VERSION}"
-    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}" --tag=v"${VERSION}"
+    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}:v${VERSION}"
     ;;    
   "upgrade-service")
     echo "Upgrading keptn service helloservice in project ${PROJECT}"
-    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}" --tag=v0.1.0
+    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}:v0.1.0"
     ;;
   "slow-build")
     echo "Deploying slow build version of helloservice in project ${PROJECT}"
-    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}" --tag=v0.1.2
+    keptn trigger delivery --project="${PROJECT}" --service=helloservice --image="${IMAGE}:v0.1.2"
     ;;
   "add-quality-gates")
     echo "Adding keptn quality-gates to project ${PROJECT}"
